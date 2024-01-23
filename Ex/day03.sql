@@ -1,11 +1,11 @@
 /***********************************************
 * 03일차 수업
 ***********************************************/
--- 그룹함수
+--  그룹함수
 
--- 단일행함수
-select  first_name,
-        salary,
+--  단일행함수
+select	first_name,
+		salary,
         round(salary, 2)
 from employees;
 
@@ -65,8 +65,8 @@ from employees
 -- ------------------------------
 # avg()   null 포함여부 주의
 -- ------------------------------
-select 	count(*),
-		sum(salary),
+select  count(*),
+        sum(salary),
         avg(salary)
 from employees
 ;
@@ -75,8 +75,8 @@ from employees
 -- ------------------------------
 # max() / min()
 -- ------------------------------
-select 	count(*),
-		max(salary),
+select  count(*),
+        max(salary),
         min(salary)
 from employees
 ;
@@ -143,5 +143,71 @@ group by department_id
 having sum(salary) >= 20000
 -- and department_id = 100
 ;  
+
+
+
+select  first_name,
+        commission_pct,
+        if(commission_pct is null ,0 ,1 ) state
+from employees;
+
+-- ------------------------------
+/*
+직원아이디, 월급, 업무아이디, 실제월급(realSalary)을 출력하세요.
+실제월급은 job_id 가 'AC_ACCOUNT' 면 월급+월급*0.1,
+                  'SA_REP' 월급+월급*0.2,
+                  'ST_CLERK' 면 월급+월급*0.3
+                  그외에는 월급으로 계산하세요
+*/
+select  employee_id,
+        salary,
+        job_id,
+        case when job_id = 'AC_ACCOUNT' then salary+salary*0.1
+             when job_id = 'SA_REP' then salary+salary*0.2
+             when job_id = 'ST_CLERK' then salary+salary*0.3
+             else salary
+        end as realSalary
+from employees
+;
+
+/*
+직원의 이름, 부서번호, 팀을 출력하세요
+팀은 코드로 결정하며 부서코드가 
+    10~50 이면 'A-TEAM'
+    60~100이면 'B-TEAM'
+    110~150이면 'C-TEAM' 
+    나머지는 '팀없음' 으로 
+출력하세요
+*/
+select  first_name,
+        department_id,
+        case when department_id >= 10 and department_id <= 50 then 'A-TEAM'
+             when department_id >= 60 and department_id <= 100 then 'B-TEAM'
+             when department_id >= 100 and department_id <= 150 then 'C-TEAM'
+             else '팀없음'
+        end as team
+from employees
+;
+
+select  first_name,
+        department_id,
+        case when department_id between 10 and 50 then 'A-TEAM'
+             when department_id between 60 and 100 then 'B-TEAM'
+             when department_id between 100 and 150 then 'C-TEAM'
+             else '팀없음'
+        end as team
+from employees
+;
+
+
+
+
+
+
+
+
+
+
+
 
 
