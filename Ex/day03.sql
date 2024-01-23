@@ -4,7 +4,8 @@
 -- 그룹함수
 
 -- 단일행함수
-select 	first_name,
+select 	
+		first_name,
 		salary,
         round(salary, 2)
 from employees;
