@@ -20,8 +20,8 @@ select  first_name,
         sum(salary)
 from employees;
 
-select 	first_name,
-		salary,
+select  first_name,
+        salary,
         sum(salary)
 from employees;
 -- ------------------------------
