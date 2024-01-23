@@ -4,10 +4,11 @@
 -- 그룹함수
 
 -- 단일행함수
-select first_name,
-	   salary,
-	   round(salary, 2)
+select 	first_name,
+		salary,
+		round(salary, 2)
 from employees;
+
 
 -- 그룹함수
 select sum(salary)
