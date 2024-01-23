@@ -201,11 +201,86 @@ from employees
 
 
 
+-- ------------------------------
+# join
+-- ------------------------------
+-- 사원이름, 부서명 , 부서번호 <--- 원하는 결과
+-- 데이터가 2개의 테이블(employees, departments)에 나눠져 있다
+
+-- 직원
+select *
+from employees;
+
+-- 부서
+select *
+from departments;
+
+
+-- 2개의 데이블을 합치기 (join)
+-- 107*27개의 row값이 생기고
+-- 두테이블의 모든 컬럼이 한개로 합쳐진다 
+-- (department_id 컬럼은 양쪽테이블에 있음)
+select *
+from employees, departments
+;
+
+-- 원하는 컬럼명만 출력
+-- department_id 컬럼때문에 오류(양쪽테이블에 같은 컬럼명으로 존재)
+-- 어느테이블의 department_id 컬럼인지 명확하게 표시해야함
+select  first_name, 
+        department_name, 
+        department_id
+from employees, departments
+; -- 오류
+
+-- 테이블명을 써서 department_id 컬럼 어느테이블인지 표시함
+select  first_name, 
+        department_name, 
+        employees.department_id,
+        departments.department_id
+from employees, departments
+;
+
+-- 테이블 별명쓰기
+-- 겹치지 않는 컬럼명은 테이블 별명을 쓰지 않아도 된다
+-- 하지만 써도 된다
+-- 겹치는 컬럼명은 꼭 써야 된다
+select  e.first_name, 
+        d.department_name, 
+        e.department_id,
+        d.department_id
+from employees e, departments d
+;
+
+
+select  e.first_name
+from employees as e
+;
 
 
 
 
 
+
+
+
+
+
+-- join
+select  e.first_name, 
+        d.department_name, 
+        e.department_id,
+        d.department_id
+from employees e, departments d
+;
+
+select first_name, department_name, department_id
+from employees, departments
+;
+
+
+
+select 107*27;
 
 
 
