@@ -27,7 +27,7 @@ from employees;
 -- ------------------------------
 # count()
 -- ------------------------------
-select *
+select  *
 from employees;
 
 select count(*)
@@ -55,8 +55,8 @@ where salary > 16000
 -- ------------------------------
 # sum()
 -- ------------------------------
-select 	count(*), 
-		sum(salary),
+select  count(*), 
+        sum(salary),
         sum(employee_id)
 from employees
 ;
