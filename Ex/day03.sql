@@ -252,7 +252,7 @@ select  e.first_name,
 from employees e, departments d
 ;
 
-
+-- 조건절 사용한 equi join
 select  e.first_name, 
         d.department_name, 
         e.department_id,
@@ -261,41 +261,42 @@ from employees e, departments d
 where e.department_id = d.department_id
 ;
 
+-- inner join 사용한 equi join
 select e.first_name, 
        d.department_name, 
        e.department_id,
        d.department_id
 from employees e 
-join departments d
+inner join departments d
    on e.department_id = d.department_id
 ;
 
-select *
-from employees;
-
-
-
-
-
-
-
-
-
--- join
-select  e.first_name, 
-        d.department_name, 
-        e.department_id,
-        d.department_id
-from employees e, departments d
+-- 모든 직원이름, 부서이름, 업무명 을 출력하세요   *3개의 테이블
+select  e.first_name,
+        d.department_name,
+        j.job_title,
+        j.job_id
+from employees e, departments d, jobs j
+where e.department_id = d.department_id
+and e.job_id = j.job_id
 ;
 
-select first_name, department_name, department_id
-from employees, departments
-;
+select  e.first_name,
+        d.department_name,
+        j.job_title,
+        j.job_id
+from employees e
+inner join departments d
+    on e.department_id = d.department_id
+inner join jobs j
+    on e.job_id = j.job_id;
+
+
+-- 이름, 부서번호, 부서명, 업무아이디, 업무명, 도시아이디, 도시명
 
 
 
-select 107*27;
+
 
 
 
