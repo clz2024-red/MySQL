@@ -15,6 +15,11 @@ select sum(salary)
 from employees;
 
 -- 오류
+select	first_name,
+		salary,
+        sum(salary)
+from employees;
+
 select 	first_name,
 		salary,
         sum(salary)
