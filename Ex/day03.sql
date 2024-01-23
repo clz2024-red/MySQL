@@ -6,7 +6,7 @@
 -- 단일행함수
 select	first_name,
 		salary,
-        round(salary, 2)
+		round(salary, 2)
 from employees;
 
 -- 그룹함수
