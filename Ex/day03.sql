@@ -253,10 +253,25 @@ from employees e, departments d
 ;
 
 
-select  e.first_name
-from employees as e
+select  e.first_name, 
+        d.department_name, 
+        e.department_id,
+        d.department_id
+from employees e, departments d
+where e.department_id = d.department_id
 ;
 
+select e.first_name, 
+       d.department_name, 
+       e.department_id,
+       d.department_id
+from employees e 
+join departments d
+   on e.department_id = d.department_id
+;
+
+select *
+from employees;
 
 
 
