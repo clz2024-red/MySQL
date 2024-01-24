@@ -291,14 +291,45 @@ inner join departments d
 inner join jobs j
     on e.job_id = j.job_id;
 
+/* 테이블 4개 조인 훈련
+이름, 부서번호, 부서명, 업무아이디, 업무명, 도시아이디, 도시명
+  직원(이름, 부서번호, 업무아이디)
+  부서(부서번호, 부서명)
+  업무(업무아이디, 업무명, 도시아이디)
+  도시(도사이아이디, 도시명)
+*/
 
--- 이름, 부서번호, 부서명, 업무아이디, 업무명, 도시아이디, 도시명
+-- where절 형식으로 
+select  e.first_name,
+        e.department_id,
+        d.department_id,
+        d.department_name,
+        e.job_id,
+        j.job_id,
+        j.job_title,
+        d.location_id,
+        l.location_id,
+        l.city
+from employees e, departments d, locations l , jobs j 
+where e.department_id = d.department_id
+and d.location_id = l.location_id
+and e.job_id = j.job_id
+;
 
-
-
-
-
-
-
-
+-- join문 형식으로
+select  e.first_name,
+        e.department_id,
+        d.department_id,
+        d.department_name,
+        e.job_id,
+        j.job_id,
+        j.job_title,
+        d.location_id,
+        l.location_id,
+        l.city
+from employees e
+inner join departments d on e.department_id = d.department_id
+inner join locations l on d.location_id = l.location_id
+inner join jobs j on e.job_id = j.job_id
+;
 
